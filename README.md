@@ -8,6 +8,9 @@ A VS Code extension that adds Markdown-like editing niceties **on top of and in 
   - `Enter` while in a list context (either ordered or unordered) continues the existing list at the current level of indentation (with correct numbering, if ordered).
   - `Tab` and `Shift+Tab` while in a list context (either ordered or unordered) indents and out-dents bullets intuitively (and re-numbers ordered lists if appropriate).
   - Reordering lines inside an ordered list automatically updates the list numbers accordingly.
+- Keyboard Shortcuts for:
+  - Toggle Bold, Italics, and Underline (`ctrl/cmd + b|i|u`)
+  - Increase and decrease header level (`ctrl/cmd + shift + ]|[`)
 
 ## Requirements
 
@@ -16,9 +19,15 @@ I *strongly* encourage installing Nathan Varner's [Typst LSP](https://github.com
 
 ## Release Notes
 
-### 0.0.1
+### 0.0.3
 
-Initial release of Typst Companion.
+- Added toggle Bold with `ctrl/cmd + b`.
+- Added toggle Italic with `ctrl/cmd + i`.
+- Added toggle Underline with `ctrl/cmd + u`.
+- Added increase/decrease Header level with `ctrl/cmd + shift + ]` and `ctrl/cmd + shift + ]`, respectively.
+- Added 'Typst Companion: Toggle List' command to command palette.
+
+For previous versions, see the [CHANGELOG on GitHub](https://github.com/CFiggers/typst-companion/blob/main/CHANGELOG.md).
 
 ## Prior Art
 

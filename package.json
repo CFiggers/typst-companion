@@ -2,7 +2,7 @@
   "name": "typst-companion",
   "displayName": "Typst Companion",
   "description": "Adds Markdown-like editing niceties on top of Typst LSP.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Caleb Figgers",
   "publisher": "CalebFiggers",
   "icon": "icons/typst-companion-icon.png",
@@ -78,6 +78,13 @@
         }
       }
     ],
+    "commands": [
+      {
+        "command": "typst-companion.extension.editing.toggleList",
+        "enablement": "editorLangId == typst",
+        "title": "Typst Companion: Toggle List"
+      }
+    ],
     "keybindings": [
       {
         "command": "typst-companion.extension.onEnterKey",
@@ -145,6 +152,36 @@
         "key": "ctrl+[",
         "mac": "cmd+[",
         "when": "editorTextFocus && editorLangId == typst && !suggestWidgetVisible"
+      },
+      {
+        "command": "typst-companion.extension.editing.toggleBold",
+        "key": "ctrl+b",
+        "mac": "cmd+b",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
+      },
+      {
+        "command": "typst-companion.extension.editing.toggleItalic",
+        "key": "ctrl+i",
+        "mac": "cmd+i",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
+      },
+      {
+        "command": "typst-companion.extension.editing.toggleUnderline",
+        "key": "ctrl+u",
+        "mac": "cmd+u",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
+      },
+      {
+        "command": "typst-companion.extension.editing.toggleHeadingUp",
+        "key": "ctrl+shift+]",
+        "mac": "ctrl+shift+]",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
+      },
+      {
+        "command": "typst-companion.extension.editing.toggleHeadingDown",
+        "key": "ctrl+shift+[",
+        "mac": "ctrl+shift+[",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
       }
     ]
   },
