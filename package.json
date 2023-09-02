@@ -1,8 +1,16 @@
 {
   "name": "typst-companion",
   "displayName": "Typst Companion",
-  "description": "Adds editing niceities on top of Typst LSP.",
+  "description": "Adds Markdown-like editing niceties on top of Typst LSP.",
   "version": "0.0.1",
+  "author": "Caleb Figgers",
+  "publisher": "Caleb Figgers",
+  "icon": "icons/typst.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CFiggers/typst-companion"
+  },
   "engines": {
     "vscode": "^1.81.0"
   },
@@ -10,14 +18,133 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:typst-companion.helloWorld"
+    "onLanguage:typst"
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
+    "configuration": [
       {
-        "command": "typst-companion.helloWorld",
-        "title": "Hello World"
+        "type": "object",
+        "title": "Typst Markdown",
+        "properties": {
+          "typst-companion.extension.orderedList.autoRenumber": {
+            "type": "boolean",
+            "default": true,
+            "description": "Auto fix ordered list markers."
+          },
+          "typst-companion.extension.orderedList.marker": {
+            "type": "string",
+            "default": "ordered",
+            "description": "Ordered list marker.",
+            "enum": [
+              "ordered",
+              "plus"
+            ],
+            "markdownEnumDescriptions": [
+              "Use increasing numbers as ordered list marker.",
+              "Always use `+` as ordered list marker."
+            ]
+          },
+          "typst-companion.extension.list.indentationSize": {
+            "type": "string",
+            "enum": [
+              "adaptive",
+              "inherit"
+            ],
+            "markdownEnumDescriptions": [
+              "Adaptive indentation size according to the context, trying to left align the sublist with its parent's content.",
+              "Use the configured tab size of the current document (see the status bar)."
+            ],
+            "default": "inherit",
+            "markdownDescription": "Whether to use different indentation sizes on different list contexts or stick to VS Code's tab size.",
+            "scope": "resource"
+          }
+        }
+      }
+    ],
+    "languages": [
+      {
+        "id": "typst",
+        "configuration": "./language-configuration.json",
+        "extensions": [
+          ".typ"
+        ],
+        "aliases": [
+          "Typst"
+        ],
+        "icon": {
+          "light": "./icons/typst-small.png",
+          "dark": "./icons/typst-small.png"
+        }
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "typst-companion.extension.onEnterKey",
+        "key": "enter",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible && !editorHasMultipleSelections && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine' && vim.mode != 'SearchInProgressMode' && vim.mode != 'CommandlineInProgress' && vim.mode != 'Replace' && vim.mode != 'EasyMotionMode' && vim.mode != 'EasyMotionInputMode' && vim.mode != 'SurroundInputMode'"
+      },
+      {
+        "command": "typst-companion.extension.onCtrlEnterKey",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible && !editorHasMultipleSelections"
+      },
+      {
+        "command": "typst-companion.extension.onShiftEnterKey",
+        "key": "shift+enter",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible && !editorHasMultipleSelections"
+      },
+      {
+        "command": "typst-companion.extension.onTabKey",
+        "key": "tab",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible && !inlineSuggestionVisible && !editorHasMultipleSelections && !editorTabMovesFocus && !inSnippetMode && !hasSnippetCompletions && !hasOtherSuggestions && typst-companion.extension.editor.cursor.inList"
+      },
+      {
+        "command": "typst-companion.extension.onShiftTabKey",
+        "key": "shift+tab",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible && !editorHasMultipleSelections && !editorTabMovesFocus && !inSnippetMode && !hasSnippetCompletions && !hasOtherSuggestions && typst-companion.extension.editor.cursor.inList"
+      },
+      {
+        "command": "typst-companion.extension.onBackspaceKey",
+        "key": "backspace",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible && !editorHasMultipleSelections && vim.mode != 'Normal' && vim.mode != 'Visual' && vim.mode != 'VisualBlock' && vim.mode != 'VisualLine' && vim.mode != 'SearchInProgressMode' && vim.mode != 'CommandlineInProgress' && vim.mode != 'Replace' && vim.mode != 'EasyMotionMode' && vim.mode != 'EasyMotionInputMode' && vim.mode != 'SurroundInputMode'"
+      },
+      {
+        "command": "typst-companion.extension.onMoveLineUp",
+        "key": "alt+up",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible"
+      },
+      {
+        "command": "typst-companion.extension.onMoveLineDown",
+        "key": "alt+down",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible"
+      },
+      {
+        "command": "typst-companion.extension.onCopyLineUp",
+        "win": "shift+alt+up",
+        "mac": "shift+alt+up",
+        "linux": "ctrl+shift+alt+up",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible"
+      },
+      {
+        "command": "typst-companion.extension.onCopyLineDown",
+        "win": "shift+alt+down",
+        "mac": "shift+alt+down",
+        "linux": "ctrl+shift+alt+down",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst && !suggestWidgetVisible"
+      },
+      {
+        "command": "typst-companion.extension.onIndentLines",
+        "key": "ctrl+]",
+        "mac": "cmd+]",
+        "when": "editorTextFocus && editorLangId == typst && !suggestWidgetVisible"
+      },
+      {
+        "command": "typst-companion.extension.onOutdentLines",
+        "key": "ctrl+[",
+        "mac": "cmd+[",
+        "when": "editorTextFocus && editorLangId == typst && !suggestWidgetVisible"
       }
     ]
   },
