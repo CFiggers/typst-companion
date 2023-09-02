@@ -2,10 +2,10 @@
   "name": "typst-companion",
   "displayName": "Typst Companion",
   "description": "Adds Markdown-like editing niceties on top of Typst LSP.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Caleb Figgers",
-  "publisher": "Caleb Figgers",
-  "icon": "icons/typst.png",
+  "publisher": "CalebFiggers",
+  "icon": "icons/typst-companion-icon.png",
   "license": "MIT",
   "repository": {
     "type": "git",
