@@ -4,7 +4,16 @@ import * as listEditing from './listEditing';
 import * as formatting from './format';
 
 export function activate(context: vscode.ExtensionContext) {
-	context.subscriptions.push(
+	
+    const typstLSP = vscode.extensions.getExtension('nvarner.typst-lsp');
+    if(!typstLSP){
+        void vscode.window.showWarningMessage(
+            'Typst Companion Says:\n\nHi there! This extension is designed to complement and accompany Nathan Varner\'s "Typst LSP" extension. It doesn\'t look like you have that extension installed!\n\nYou probably want to go install Typst LSP in addition to this one.',
+            'Got it, thanks!'
+        );
+    }
+    
+    context.subscriptions.push(
         contextServiceManager
     );
 
