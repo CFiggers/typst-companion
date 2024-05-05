@@ -88,44 +88,8 @@ function onEnterKey(modifiers?: IModifier) {
     }
 
     let matches: RegExpExecArray | null;
-    if (/^> /.test(textBeforeCursor)) {
-        // Block quotes
-
-        // Case 1: ending a blockquote if:
-        const isEmptyArrowLine = line.text.replace(/[ \t]+$/, '') === '>';
-        if (isEmptyArrowLine) {
-            if (cursorPos.line === 0) {
-                // it is an empty '>' line and also the first line of the document
-                return editor.edit(editorBuilder => {
-                    editorBuilder.replace(new Range(new Position(0, 0), new Position(cursorPos.line, cursorPos.character)), '');
-                }).then(() => { editor.revealRange(editor.selection) });
-            } else {
-                // there have been 2 consecutive empty `>` lines
-                const prevLineText = editor.document.lineAt(cursorPos.line - 1).text;
-                if (prevLineText.replace(/[ \t]+$/, '') === '>') {
-                    return editor.edit(editorBuilder => {
-                        editorBuilder.replace(new Range(new Position(cursorPos.line - 1, 0), new Position(cursorPos.line, cursorPos.character)), '\n');
-                    }).then(() => { editor.revealRange(editor.selection) });
-                }
-            }
-        }
-
-        // Case 2: `>` continuation
-        return editor.edit(editBuilder => {
-            if (isEmptyArrowLine) {
-                const startPos = new Position(cursorPos.line, line.text.trim().length);
-                editBuilder.delete(new Range(startPos, line.range.end));
-                lineBreakPos = startPos;
-            }
-            editBuilder.insert(lineBreakPos, `\n> `);
-        }).then(() => {
-            // Fix cursor position
-            if (modifiers == 'ctrl' && !cursorPos.isEqual(lineBreakPos)) {
-                let newCursorPos = cursorPos.with(line.lineNumber + 1, 2);
-                editor.selection = new Selection(newCursorPos, newCursorPos);
-            }
-        }).then(() => { editor.revealRange(editor.selection) });
-    } else if ((matches = /^((\s*[-+*] +)(\[[ x]\] +)?)/.exec(textBeforeCursor)) !== null) {
+    // Unordered bullet before cursor
+    if ((matches = /^((\s*[-+*] +)(\[[ x]\] +)?)/.exec(textBeforeCursor)) !== null) {
         // satisfy compiler's null check
         const match0 = matches[0];
         const match1 = matches[1];
