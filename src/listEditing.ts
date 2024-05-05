@@ -77,14 +77,25 @@ function onEnterKey(modifiers?: IModifier) {
         return asNormal(editor, 'enter', modifiers);
     }
 
-    //// If it's an empty list item, remove it
+    //// If it's an empty list item, de-dent it; if already fully de-dented, remove it
     if (/^([-+*]|[0-9]+[.)])( +\[[ x]\])?$/.test(textBeforeCursor.trim()) && textAfterCursor.trim().length == 0) {
-        return editor.edit(editBuilder => {
-            editBuilder.delete(line.range);
-            editBuilder.insert(line.range.end, '\n');
-        }).then(() => {
-            editor.revealRange(editor.selection);
-        }).then(() => fixMarker(editor));
+        if (modifiers == 'ctrl') {
+            return editor.edit(editBuilder => {
+                editBuilder.insert(line.range.end, '\n');
+            }).then(() => {
+                editor.revealRange(editor.selection);
+            }).then(() => fixMarker(editor));
+        }
+        else if (/^([-+*]|[0-9]+[.)])( +\[[ x]\])? *?$/.test(textBeforeCursor)) {
+            return editor.edit(editBuilder => {
+                editBuilder.delete(line.range);
+                editBuilder.insert(line.range.end, '\n');
+            }).then(() => {
+                editor.revealRange(editor.selection);
+            }).then(() => fixMarker(editor));
+        } else {      
+            return outdent(editor).then(() => fixMarker(editor));
+        }
     }
 
     let matches: RegExpExecArray | null;
