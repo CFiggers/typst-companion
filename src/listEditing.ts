@@ -136,6 +136,8 @@ function onEnterKey(modifiers?: IModifier) {
                 editor.selection = new Selection(newCursorPos, newCursorPos);
             }
         }).then(() => { editor.revealRange(editor.selection) });
+    
+    // Ordered list item before cursor
     } else if ((matches = /^(\s*)([0-9]+)([.)])( +)((\[[ x]\] +)?)/.exec(textBeforeCursor)) !== null) {
         // Ordered list
         let config = workspace.getConfiguration('typst-companion.extension.orderedList').get<string>('marker');
@@ -166,7 +168,17 @@ function onEnterKey(modifiers?: IModifier) {
             }
         }).then(() => fixMarker(editor)).then(() => { editor.revealRange(editor.selection); });
     } else {
-        return asNormal(editor, 'enter', modifiers);
+        if (modifiers == 'ctrl') {
+            return editor.edit(
+                editBuilder => {
+                    editBuilder.insert(line.range.end, '#pagebreak()\n');
+                }
+            ).then(() => {
+                editor.revealRange(editor.selection);
+            });
+        } else {
+            return asNormal(editor, 'enter', modifiers);
+        }
     }
 }
 
