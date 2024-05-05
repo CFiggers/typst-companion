@@ -11,6 +11,7 @@ A VS Code extension that adds Markdown-like editing niceties **on top of and in 
 - Keyboard Shortcuts for:
   - Toggle Bold, Italics, and Underline (`ctrl/cmd + b|i|u`)
   - Increase and decrease header level (`ctrl/cmd + shift + ]|[`)
+  - Insert a page break (`ctrl/cmd + enter`, when not in a list context)
 
 ## Requirements
 
@@ -19,13 +20,12 @@ I *strongly* encourage installing Nathan Varner's [Typst LSP](https://github.com
 
 ## Release Notes
 
-### 0.0.3
+### 0.0.4
 
-- Added toggle Bold with `ctrl/cmd + b`.
-- Added toggle Italic with `ctrl/cmd + i`.
-- Added toggle Underline with `ctrl/cmd + u`.
-- Added increase/decrease Header level with `ctrl/cmd + shift + ]` and `ctrl/cmd + shift + ]`, respectively.
-- Added 'Typst Companion: Toggle List' command to command palette.
+- Added out-dent/de-dent with `enter` when cursor is at start of an empty list item.
+- Added skip to next line with `ctrl/cmd + enter` when in a list context.
+- Added insert a page break with `ctrl/cmd + enter` when not in a list context.
+
 
 For previous versions, see the [CHANGELOG on GitHub](https://github.com/CFiggers/typst-companion/blob/main/CHANGELOG.md).
 
