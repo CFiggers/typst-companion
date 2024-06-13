@@ -20,11 +20,9 @@ I *strongly* encourage installing Nathan Varner's [Typst LSP](https://github.com
 
 ## Release Notes
 
-### 0.0.4
+### 0.0.5
 
-- Added out-dent/de-dent with `enter` when cursor is at start of an empty list item.
-- Added skip to next line with `ctrl/cmd + enter` when in a list context.
-- Added insert a page break with `ctrl/cmd + enter` when not in a list context.
+- Will no longer warn if [tinymist](https://github.com/Myriad-Dreamin/tinymist) LSP is installed rather than [Typst LSP](https://github.com/nvarner/typst-lsp).
 
 
 For previous versions, see the [CHANGELOG on GitHub](https://github.com/CFiggers/typst-companion/blob/main/CHANGELOG.md).
