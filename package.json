@@ -180,7 +180,7 @@
       {
         "command": "typst-companion.extension.editing.toggleStriketrough",
         "key": "ctrl+shift+u",
-        "mac": "cmd+shifht+u",
+        "mac": "cmd+shift+u",
         "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
       },
       {
