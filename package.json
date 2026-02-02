@@ -184,6 +184,18 @@
         "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
       },
       {
+        "command": "typst-companion.extension.editing.toggleSuperscript",
+        "key": "ctrl+shift+=",
+        "mac": "cmd+shift+=",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
+      },
+      {
+        "command": "typst-companion.extension.editing.toggleSubrscript",
+        "key": "ctrl+shift+-",
+        "mac": "cmd+shift+-",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
+      },
+      {
         "command": "typst-companion.extension.editing.toggleHeadingUp",
         "key": "ctrl+shift+]",
         "mac": "ctrl+shift+]",
