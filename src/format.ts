@@ -54,11 +54,11 @@ function toggleUnderline() {
 }
 
 function toggleHighlight() {
-    return styleByWrapping("highlight[", "]");
+    return styleByWrapping("#highlight[", "]");
 }
 
 function toggleStriketrough() {
-    return styleByWrapping("strike[", "]");
+    return styleByWrapping("#strike[", "]");
 }
 
 async function toggleHeadingUp() {
