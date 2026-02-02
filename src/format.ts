@@ -33,6 +33,8 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand('typst-companion.extension.editing.toggleBold', toggleBold),
         commands.registerCommand('typst-companion.extension.editing.toggleItalic', toggleItalic),
         commands.registerCommand('typst-companion.extension.editing.toggleUnderline', toggleUnderline),
+        commands.registerCommand('typst-companion.extension.editing.toggleHighlight', toggleHighlight),
+        commands.registerCommand('typst-companion.extension.editing.toggleStriketrough', toggleStriketrough),
         commands.registerCommand('typst-companion.extension.editing.toggleHeadingUp', toggleHeadingUp),
         commands.registerCommand('typst-companion.extension.editing.toggleHeadingDown', toggleHeadingDown),
         commands.registerCommand('typst-companion.extension.editing.toggleList', toggleList)
@@ -49,6 +51,14 @@ function toggleBold() {
 
 function toggleUnderline() {
     return styleByWrapping("#underline[", "]");
+}
+
+function toggleHighlight() {
+    return styleByWrapping("highlight[", "]");
+}
+
+function toggleStriketrough() {
+    return styleByWrapping("strike[", "]");
 }
 
 async function toggleHeadingUp() {
