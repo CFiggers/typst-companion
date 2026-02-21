@@ -181,6 +181,7 @@
         "command": "typst-companion.extension.editing.toggleStrikethrough",
         "key": "ctrl+shift+u",
         "mac": "cmd+shift+u",
+        "linux": "Win+y",
         "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
       },
       {
