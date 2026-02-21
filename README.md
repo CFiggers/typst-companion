@@ -1,6 +1,6 @@
 # Typst Companion
 
-A VS Code extension that adds Markdown-like editing niceties **on top of and in addition to** to Nathan Varner's [Typst LSP](https://github.com/nvarner/typst-lsp).
+A VS Code extension that adds Markdown-like editing niceties **on top of and in addition to** to an LSP extension like [tinymist](https://github.com/Myriad-Dreamin/tinymist).
 
 ## Features
 
@@ -10,19 +10,22 @@ A VS Code extension that adds Markdown-like editing niceties **on top of and in 
   - Reordering lines inside an ordered list automatically updates the list numbers accordingly.
 - Keyboard Shortcuts for:
   - Toggle Bold, Italics, and Underline (`ctrl/cmd + b|i|u`)
+  - Toggle Highlight (`ctrl/cmd+h`) and Strikethrough (`ctrl/cmd+shift+u`)
+  - Toggle Superscript (`ctrl/cmd+shift+=`) and Subscript (`ctrl/cmd+shift+-`)
   - Increase and decrease header level (`ctrl/cmd + shift + ]|[`)
   - Insert a page break (`ctrl/cmd + enter`, when not in a list context)
 
 ## Requirements
 
-I *strongly* encourage installing Nathan Varner's [Typst LSP](https://github.com/nvarner/typst-lsp) in addition to this extension for syntax highlighting, error reporting, code completion, and all of Typst LSP's other features. 
-    This extension just adds some small additional features that I missed when using Typst LSP.
+I *strongly* encourage installing [tinymist](https://github.com/Myriad-Dreamin/tinymist) in addition to this extension for syntax highlighting, error reporting, code completion, and all of tinymist LSP's other features. 
+    This extension just adds some small additional features that I missed when using tinymist LSP.
 
 ## Release Notes
 
-### 0.0.5
+### 0.0.6 (2026-02-21)
 
-- Will no longer warn if [tinymist](https://github.com/Myriad-Dreamin/tinymist) LSP is installed rather than [Typst LSP](https://github.com/nvarner/typst-lsp).
+- New keyboard shortcuts: Toggle Highlight, Toggle Strikethrough by @Qwekkeboom in #9
+- New keyboard shortcuts: Toggle Superscript, Toggle Subscript by @Qwekkeboom in #10
 
 
 For previous versions, see the [CHANGELOG on GitHub](https://github.com/CFiggers/typst-companion/blob/main/CHANGELOG.md).

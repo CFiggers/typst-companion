@@ -2,6 +2,11 @@
 
 All notable changes to Typst Companion will be documented here.
 
+## 0.0.6 (2026-02-21)
+
+- New keyboard shortcuts: Toggle Highlight, Toggle Strikethrough by @Qwekkeboom in #9
+- New keyboard shortcuts: Toggle Superscript, Toggle Subscript by @Qwekkeboom in #10
+
 ## 0.0.5
 
 - Will no longer warn if [tinymist](https://github.com/Myriad-Dreamin/tinymist) LSP is installed rather than [Typst LSP](https://github.com/nvarner/typst-lsp).
