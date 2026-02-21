@@ -190,7 +190,7 @@
         "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
       },
       {
-        "command": "typst-companion.extension.editing.toggleSubrscript",
+        "command": "typst-companion.extension.editing.toggleSuperscript",
         "key": "ctrl+shift+-",
         "mac": "cmd+shift+-",
         "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
