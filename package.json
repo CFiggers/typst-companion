@@ -172,6 +172,18 @@
         "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
       },
       {
+        "command": "typst-companion.extension.editing.toggleHighlight",
+        "key": "ctrl+h",
+        "mac": "cmd+h",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
+      },
+      {
+        "command": "typst-companion.extension.editing.toggleStriketrough",
+        "key": "ctrl+shift+u",
+        "mac": "cmd+shift+u",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == typst"
+      },
+      {
         "command": "typst-companion.extension.editing.toggleHeadingUp",
         "key": "ctrl+shift+]",
         "mac": "ctrl+shift+]",
